@@ -5,6 +5,19 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 const User = mongoose.model("users");
 
+//Serialize user after they signup to create their record and help in login again
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+	console.log("Serialized ID :", user.id);
+});
+
+passport.deserializeUser((id, done) => {
+	User.findById(id).then((user) => {
+		done(null, user);
+		console.log("Deserialized ID :", user);
+	});
+});
+
 passport.use(
 	new GoogleStrategy(
 		{
