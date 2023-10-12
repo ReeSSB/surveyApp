@@ -8,6 +8,7 @@
 		"npm": "9.8.0"
 	},
 	"scripts": {
+<<<<<<< HEAD
 		"start": "node index.js",
 		"dev": "nodemon index.js"
 	},
